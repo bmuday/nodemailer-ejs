@@ -9,7 +9,7 @@ class App extends Component {
       <div className="container">
         <header className="App-header" style={{ marginBottom: "50px" }}>
           <img
-            src={logo}
+            src=""
             className="App-logo"
             alt="logo"
             style={{ height: "75px" }}

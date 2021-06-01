@@ -53,7 +53,7 @@ router.post("/send", (req, res, next) => {
         console.log(err);
       } else {
         var mainOptions = {
-          from: '"YOUR_NAME" YOUR_EMAIL_ADDRESS',
+          from: "bmuday971@gmail.com",
           to: email,
           subject: "Account Activated",
           html: data,

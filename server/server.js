@@ -1,7 +1,9 @@
 //Express Configuration
-var express = require("express");
+const express = require("express");
 const app = express();
 const PORT = 4000;
+
+require("dotenv").config();
 
 //Cors Configuration
 const cors = require("cors");
@@ -12,11 +14,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Node Mailer Configuration
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 //Creating transport instance
-var transport = {
-  host: "smtp.gmail.com",
+const transport = {
+  service: "gmail",
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASSWORD,
@@ -24,7 +26,7 @@ var transport = {
 };
 
 //Creating a Nodemailer Transport instance
-var transporter = nodemailer.createTransport(transport);
+const transporter = nodemailer.createTransport(transport);
 
 //Verifying the Nodemailer Transport instance
 transporter.verify((error, success) => {
@@ -36,12 +38,12 @@ transporter.verify((error, success) => {
 });
 
 //Express Router Configuration
-var router = express.Router();
+const router = express.Router();
 
 router.post("/send", (req, res, next) => {
-  var name = req.body.name;
-  var email = req.body.email;
-  var message = req.body.message;
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
 
   const ejs = require("ejs");
 
@@ -52,7 +54,7 @@ router.post("/send", (req, res, next) => {
       if (err) {
         console.log(err);
       } else {
-        var mainOptions = {
+        const mainOptions = {
           from: "bmuday971@gmail.com",
           to: email,
           subject: "Account Activated",
